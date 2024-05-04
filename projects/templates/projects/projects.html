@@ -26,6 +26,25 @@
             </div>
         </div>
     </div>
+
+    <div class="row mb-5">
+        <div class="col-3"></div>
+        <div class="col-6">
+            <form class="form" action="#" method="get">
+                <div class="input-group input-group-lg">
+                    <input type="text" id="first-name-horizontal" class="form-control rounded-pill" name="fname" placeholder="Search by project name">
+                    <div class="m-2">
+                        <button class="btn btn-outline-secondary rounded-pill" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                    
+                </div>
+            </form>
+        </div>
+        <div class="col-3"></div>
+    </div>
+
     <!-- Basic card section start -->
     <section id="content-types">
         <div class="row">
@@ -36,13 +55,15 @@
                 <div class="card">
                     <div class="card-content">
                         <a href="{% url 'project' project.id %}">
-                            <img class="card-img-top img-fluid" src="{{ project.featured_image.url }}" alt="Card image cap"
-                            style="height: 20rem" />
+                            <div class="image-container" style="height: 20rem; overflow: hidden;">
+                                <img class="card-img-top img-fluid" src="{{ project.featured_image.url }}" alt="Card image cap" style="width: 100%; height: 100%; object-fit: cover;"/>
+                            </div>
                         </a>
+                        
                         <div class="card-body">
                             <h4 class="card-title">{{project.title}}</h4>
                             <p class="card-text">
-                                {{project.description}}
+                                {{project.description|slice:150}}
                             </p>
                             <p class="card-text">
                                 Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar muffin.
@@ -56,7 +77,7 @@
 
                             {% endfor %}
 
-                            <div class="btn-group align-items-center mx-2 px-1">
+                            <!-- <div class="btn-group align-items-center mx-2 px-1">
                                 <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
                                     <i
                                         class="bi bi-heart d-flex align-items-center justify-content-center text-secondary"> {{ project.like_total }}</i>
@@ -69,7 +90,7 @@
                                     <i
                                         class="bi bi-bookmark d-flex align-items-center justify-content-center text-secondary"></i>
                                 </button>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
