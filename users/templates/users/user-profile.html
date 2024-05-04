@@ -1,0 +1,132 @@
+{% extends 'main-web-non-sidebar.html' %}
+
+{% block content %}
+
+<nav class="navbar navbar-light">
+    <div class="container d-block">
+        <a href="{% url 'profiles' %}"><i class="bi bi-chevron-left"></i></a>
+        <a class="navbar-brand ms-4" href="{% url 'projects' %}">
+            <img src="./assets/compiled/svg/logo.svg" alt="EventArc">
+        </a>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header">
+            <h4 class="card-title">{{profile.id}}</h4>
+        </div>
+        <div class="card-body">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'projects' %}">Projects</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{project.title}}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-sm-5 col-xs-12">
+            
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <h4 class="card-title mb-0">TOOLS & STACKS</h4>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            Candy cupcake sugar plum oat cake wafer marzipan jujubes.
+                            Jelly-o sesame snaps cheesecake topping. Cupcake fruitcake macaroon donut pastry gummies
+                            tiramisu
+                            chocolate bar muffin.
+                        </p>
+                        <hr>
+
+                        {% for tag in project.tags.all %}
+
+                        <button class="btn bg-light-primary" style="border-radius: 50px;">
+                            {{tag}} 
+                        </button>                        
+
+                        {% endfor %}
+
+                        <hr>
+
+                        {% if project.demo_link %}
+
+                        <div class="mt-4">
+                            <a href="#" class="btn icon icon-left btn-light" style="background-color: rgba(255, 255, 255, 0.3); border: none; color: aliceblue; border-radius: 50px;" class="btn icon icon-left btn-light">
+                                <i data-feather="file"></i> 
+                                Source Code </a>
+                        </div>
+
+                        {% endif %}
+
+                        {% if project.source_link %}
+
+                        <div class="mt-2" >
+                            <a href="#" style="background-color: rgba(255, 255, 255, 0.3); border: none; color: aliceblue; border-radius: 50px;" class="btn icon icon-left btn-light">
+                                <i data-feather="star"></i> 
+                                Demostration 
+                            </a>
+                        </div>
+                        
+
+                        {% endif %}
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <div class="col-md-8 col-sm-7 col-xs-12">
+            
+            
+
+
+            <div class="card">
+                <div class="card-content">
+                    <img class="card-img-bottom img-fluid" src="{{ project.featured_image.url }}"
+                        alt="Card image cap" style="height: 20rem; object-fit: cover;">
+                    <div class="card-body">
+                        <h4 class="card-title">{{profile.name}}</h4>
+                        <small class="text-muted">By {{project.owner.name}}</small>
+                        <hr>    
+                        <p class="card-text">
+                            {{project.description}}
+                        </p>
+                        <a href="#" class="card-link"><small>Read 12 Comments</small></a>
+                    </div>
+                    <div class="btn-group align-items-center mx-2 px-1">
+                        <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
+                            <i
+                                class="bi bi-heart d-flex align-items-center justify-content-center text-secondary"></i>
+                        </button>
+                        <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
+                            <i
+                                class="bi bi-chat d-flex align-items-center justify-content-center text-secondary"></i>
+                        </button>
+                        <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">
+                            <i
+                                class="bi bi-bookmark d-flex align-items-center justify-content-center text-secondary"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
