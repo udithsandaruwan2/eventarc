@@ -23,6 +23,18 @@
 
     {% include 'sidebar.html' %}
 
+    {% if messages %}
+
+      {% for message in messages %}
+
+      <ul classes="messages">
+        <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
+      </ul>
+
+      {% endfor %}
+
+    {% endif %}
+
     {% block content %}
 
     {% endblock content %}
