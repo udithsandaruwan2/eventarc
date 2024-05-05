@@ -61,15 +61,19 @@
                         </a>
                         
                         <div class="card-body">
-                            <h4 class="card-title">{{project.title}}</h4>
-                            <p class="card-text">
+                            <h4 class="card-title mb-0">{{project.title}}</h4>
+                            <small class="text-muted">
+                                By <a href="">{{ project.owner.name }}</a>
+
+                            </small>
+                            <p class="card-text mt-3">
                                 {{project.description|slice:150}}
                             </p>
                             <p class="card-text">
                                 Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar muffin.
                             </p>
 
-                            {% for tag in project.tags.all %}
+                            {% for tag in project.tags.all|slice:"5" %}
 
                                 <span class="badge bg-light-primary" style="border-radius: 50px;">
                                     <small>{{tag}}</small>
