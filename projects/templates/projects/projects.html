@@ -1,5 +1,7 @@
 {% extends 'main-web.html' %}
 
+{% load static %}
+
 {% block content %} 
 
 <div id="main">
@@ -51,7 +53,7 @@
         
             {% for project in projects %}
 
-            <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="card">
                     <div class="card-content">
                         <a href="{% url 'project' project.id %}">
