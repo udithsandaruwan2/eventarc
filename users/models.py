@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 import uuid
 
 class Profile(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, null=True, blank=True)
     email = models.EmailField(max_length=500, null=True, blank=True)
     username = models.CharField(max_length=200, null=True, blank=True)

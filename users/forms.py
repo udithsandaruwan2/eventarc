@@ -14,23 +14,23 @@ class CustomUserCreationForm(UserCreationForm):
         super(CustomUserCreationForm, self).__init__(*args, **kwargs)
 
         self.fields['first_name'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder': 'Name', 'type':'text'},
+            {'class': 'form-control form-control-xl', 'placeholder': 'eg : Udith Sandaruwan', 'type':'text'},
         )
 
         self.fields['email'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder':'Email', 'type':'text'}
+            {'class': 'form-control form-control-xl', 'placeholder':'eg : udith@eventarc.com', 'type':'text'}
         )
 
         self.fields['username'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder': 'Username', 'type':'text'}
+            {'class': 'form-control form-control-xl', 'placeholder': 'eg : udith002', 'type':'text'}
         )
 
         self.fields['password1'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder': 'Password', 'type':'password'}
+            {'class': 'form-control form-control-xl', 'placeholder': '*************', 'type':'password'}
         )
 
         self.fields['password2'].widget.attrs.update(
-            {'class': 'form-control form-control-xl', 'placeholder': 'Confirm Password', 'type':'password'}
+            {'class': 'form-control form-control-xl', 'placeholder': '*************', 'type':'password'}
         )
 
 

@@ -20,7 +20,7 @@
                 <h1 class="auth-title">Sign Up</h1>
                 <p class="auth-subtitle mb-5">Input your data to register to our website.</p>
                     
-                <form action="" method="POST">
+                <form method="POST">
 
                     {% csrf_token %}
 
@@ -29,7 +29,22 @@
 
                     <div class="form-group position-relative has-icon-left mb-4">
 
+                        {{field.label}}
+
                         {{field}}
+                        
+                        {% comment %} {% if field.help_text %}
+
+                        <small {{field.help_text}} ></small>
+                            
+                        {% endif %} {% endcomment %}
+                            
+                        
+                        {% for error in field.errors %}
+
+                        <p style="color:red;"> {{error}} </p>
+                            
+                        {% endfor %}
                     
                     </div>
                         

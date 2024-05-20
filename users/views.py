@@ -30,7 +30,7 @@ def loginPage(request):
 @login_required(login_url="login")
 def logoutUser(request):
     logout(request)
-    messages.error(request, 'User was logged out!')
+    messages.info(request, 'User was logged out!')
     return redirect('login')
 
 def registerUser(request):
@@ -50,7 +50,7 @@ def registerUser(request):
             return redirect('projects')
         
         else:
-            messages.error(request, 'An error has occurd during registation!')
+            messages.error(request, 'An error has occurred during registation!')
 
     context = {'page':page, 'form':form}
     return render(request, 'users/login-register.html', context)
@@ -70,3 +70,18 @@ def userProfile(request, pk):
 
     context = {'profile':profile, 'topskills':topskills, 'otherskills':otherskills}
     return render(request, 'users/user-profile.html', context)
+
+@login_required(login_url="login")
+def userAnalytics(request):
+    context = {}
+    return render(request, 'users/analytics.html', context)
+
+@login_required(login_url="login")
+def userAccount(request):
+    profile = request.user.profile
+    
+    topskills = profile.skill_set.exclude(description__exact="")
+    otherskills = profile.skill_set.filter(description="")
+    
+    context = {'profile':profile,'topskills':topskills, 'otherskills':otherskills}
+    return render(request, 'users/account.html', context)

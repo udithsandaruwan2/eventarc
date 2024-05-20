@@ -16,12 +16,13 @@
     <link rel="stylesheet" href="{% static 'ui-kit/assets/compiled/css/app.css' %}">
     <link rel="stylesheet" href="{% static 'ui-kit/assets/compiled/css/app-dark.css' %}">
     <link rel="stylesheet" href="{% static 'ui-kit/assets/compiled/css/iconly.css' %}">
-</head>
+    <link rel="stylesheet" href="{% static 'styles/custom.css' %}">
+  </head>
 <body>
     <script src="{% static 'ui-kit/assets/static/js/initTheme.js' %}"></script>
     <div id="app">
     
-    {% if messages %}
+    {% comment %} {% if messages %}
 
       {% for message in messages %}
 
@@ -29,6 +30,23 @@
         <li {% if message.tags %} class="{{message.tags}}" {% endif %}>{{message}}</li>
       </ul>
 
+      {% endfor %}
+
+    {% endif %} {% endcomment %}
+
+    {% if messages %}
+
+      {% for message in messages %}
+
+      <ul class="messages">
+        <div class="alert alert-dark alert-dismissible show fade" role="alert">
+
+          {{message}}
+
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </ul>
+      
       {% endfor %}
 
     {% endif %}
@@ -50,6 +68,7 @@
 
     <script src="{% static 'ui-kit/assets/extensions/choices.js/public/assets/scripts/choices.js' %}"></script>
     <script src="{% static 'ui-kit/assets/static/js/pages/form-element-select.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
         
 </body>
 </html>

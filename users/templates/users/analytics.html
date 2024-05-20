@@ -1,3 +1,6 @@
+{% extends 'main-web.html' %}
+
+{% block content %} 
 
 <div id="main">
     <header class="mb-3">
@@ -214,10 +217,12 @@
                             <div class="avatar avatar-xl">
                                 <img src="./assets/compiled/jpg/1.jpg" alt="Face 1">
                             </div>
-                            <div class="ms-3 name">
-                                <h5 class="font-bold">John Duck</h5>
-                                <h6 class="text-muted mb-0">@johnducky</h6>
-                            </div>
+                            <a href="{% url 'account' %}">
+                                <div class="ms-3 name">
+                                    <h5 class="font-bold">John Duck</h5>
+                                    <h6 class="text-muted mb-0">@johnducky</h6>
+                                </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -281,3 +286,7 @@
         </footer>
     </div>
 </div>
+
+</div>
+
+{% endblock content %}
