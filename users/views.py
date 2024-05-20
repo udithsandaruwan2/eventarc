@@ -49,8 +49,8 @@ def registerUser(request):
             login(request, user)
             return redirect('projects')
         
-    else:
-        messages.error(request, 'An error has occurd during registation!')
+        else:
+            messages.error(request, 'An error has occurd during registation!')
 
     context = {'page':page, 'form':form}
     return render(request, 'users/login-register.html', context)
