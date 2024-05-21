@@ -9,18 +9,18 @@
     gap: 10px; /* Space between messages */
     max-width: 90%; /* Ensure the messages don’t exceed the viewport width */
     overflow-x: auto; /* Handle overflow if there are many alerts */
-  }
-  
-  .alert {
+}
+
+.alert {
     animation: fade-in 0.75s;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
     background-color: rgba(13, 110, 253, 0.7); /* Updated for transparency */
     min-width: 350px; /* Minimum width for alerts */
-  }
-  
-  @keyframes fade-in {
+}
+
+@keyframes fade-in {
     from { opacity: 0; }
     to { opacity: 1; }
-  }
-  
+}
+

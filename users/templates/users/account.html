@@ -8,7 +8,7 @@
     <div class="container d-block">
         <a href="{% url 'analytics' %}"><i class="bi bi-chevron-left"></i></a>
         <a class="navbar-brand ms-4" href="{% url 'analytics' %}">
-            <img src="./assets/compiled/svg/logo.svg" alt="EventArc">
+            <img src="{% static 'ui-kit/assets/compiled/png/logo.png' %}" alt="EventArc">
         </a>
     </div>
 </nav>
@@ -23,13 +23,15 @@
                             <div class="card text-center">
                                 <div class="card__body dev">
                                     <div>
-                                        <a href="#" style="border-radius: 50px;" class="btn icon icon-left btn-light p-3 pt-2 pb-2"><i data-feather="edit"></i> Light</a>
+                                        <a href="{% url 'update-profile' %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-3 pt-2 pb-2">
+                                            <i data-feather="edit"></i> 
+                                            edit
+                                        </a>
                                     </div>
                                     <img class="avatar avatar-sm mt-4" src="{{ profile.profile_image.url }}" alt="Dennis Ivanov Avatar" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 1px solid #fff;" />
                                     <h2 class="card-title mt-4">{{profile.name}}</h2>
-                                    <p>{{profile.short_intro}}r</p>
+                                    <p>{{profile.short_intro}}</p>
                                     <p>{{profile.location}}</p>
-                          
                                     <div class="m-1">
 
                                         {% if profile.social_github %}
@@ -73,9 +75,6 @@
                                         {% endif %}
 
                                     </div>
-                                    
-
-                        
                                     <a href="#" class="btn btn-primary p-5 pt-3 pb-3 mt-4">Send Message</a>
                                 </div>
                             </div>
@@ -83,32 +82,14 @@
                     </div>
                 </div>
             </div>
-            
-
-
-
-
         </div>
-
         <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
-            
-            
-
-
             <div class="card">
                 <div class="card-content">
                     <div class="card-body p-5">
-                        <div class="row">
-                            <div class="col-9">
-                                <h4 class="card-title">ABOUT ME</h4>
-                            </div>
-                            <div class="col-3 d-flex justify-content-end"> <!-- Modify this line -->
-                                <div>
-                                    <a href="#" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1"><i data-feather="edit"></i> edit</a>
-                                </div>
-                            </div>     
-                        </div>
-                        
+                        <div class="col">
+                            <h4 class="card-title">ABOUT ME</h4>
+                        </div>   
                         <div style="text-align: justify;">
                             <p class="card-text mt-4"></p>
                                 {{profile.bio}}
@@ -121,7 +102,7 @@
                             </div>
                             <div class="col-3 mt-4 mb-4 d-flex justify-content-end"> <!-- Modify this line -->
                                 <div>
-                                    <a href="#" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1"><i data-feather="plus"></i> add skill</a>
+                                    <a href="{% url 'add-skill' %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1"><i data-feather="plus"></i> add</a>
                                 </div>
                             </div>     
                         </div>
@@ -129,36 +110,38 @@
                         {% for skill in topskills %}
 
                         <div class="row mt-4">
-                            <div class="col-4">
+                            <div class="col">
                                 <h6>{{skill.name}}</h6>
                             </div>
-                            <div class="col-7" style="text-align: justify;">
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col" style="text-align: justify;">
                                 <p class="card-text">
                                     {{skill.description}}
                                 </p>
                             </div>
-                            
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col d-flex justify-content-begin"> <!-- Modify this line -->
+                                    <a href="{% url 'update-skill' skill.id %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1 m-1"> <i data-feather="edit"></i> <span class="button-text"> edit</span></a>
+                                    <a href="{% url 'delete-skill' skill.id %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1 m-1"><i data-feather="alert-triangle"></i> <span class="button-text"> delete</span></a>
+                            </div> 
                         </div>
         
                         {% endfor %}
 
-                        <div class="row">
-                            <div class="col-9">
-                                <h4 class="card-title mt-4 mb-4">OTHER SKILLS</h4>
-                            </div>
-                            <div class="col-3 mt-4 mb-4 d-flex justify-content-end"> <!-- Modify this line -->
-                                <div>
-                                    <a href="#" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1"><i data-feather="plus"></i> add other skill</a>
-                                </div>
-                            </div>                            
-                        </div>
-                        
                         {% for skill in otherskills %}
-                        
-                        <button class="btn bg-light-primary m-1" style="border-radius: 50px;">
-                            {{skill.name}}
-                        </button>
-                        
+
+                        <div class="row mt-4">
+                            <div class="col">
+                                <h6>{{skill.name}}</h6>
+                            </div>
+                            <div class="col d-flex justify-content-begin"> <!-- Modify this line -->
+                                <a href="{% url 'update-skill' skill.id %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1 m-1"><i data-feather="edit"></i> <span class="button-text"> edit</span></a>
+                                <a href="{% url 'delete-skill' skill.id %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1 m-1"><i data-feather="alert-triangle"></i> <span class="button-text"> delete</span></a>
+                            </div> 
+                        </div>
+        
                         {% endfor %}
                         
                         <div class="row">
@@ -167,7 +150,7 @@
                             </div>
                             <div class="col-3 mt-4 mb-4 d-flex justify-content-end"> <!-- Modify this line -->
                                 <div>
-                                    <a href="#" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1"><i data-feather="plus"></i> add project</a>
+                                    <a href="{% url 'create-project' %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1"><i data-feather="plus"></i> add</a>
                                 </div>
                             </div>     
                         </div>
@@ -180,7 +163,7 @@
                                 <div class="card" style="border: 2px solid gray; border-radius: 12px;">                          
                                     <div class="card-content">
                                         <a href="{% url 'project' project.id %}">
-                                            <div class="image-container" style="height: 20rem; overflow: hidden;">
+                                            <div class="image-container" style="height: 15rem; overflow: hidden;">
                                                 <img class="card-img-top img-fluid" src="{{project.featured_image.url}}" alt="Card image cap" style="width: 100%; height: 100%; object-fit: cover;"/>
                                             </div>
                                         </a>
@@ -189,19 +172,24 @@
                                             <hr>
                                             <h4 class="card-title">{{project.title}}</h4>
                                             <p class="card-text">
-                                                {{project.description|slice:50}}
+                                                {{project.description|slice:30}}
                                             </p>
                                             <p class="card-text">
                                                 Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar muffin.
                                             </p>
 
-                                            {% for tag in project.tags.all %}
+                                            <div class="col d-flex justify-content-begin"> <!-- Modify this line -->
+                                                    <a href="{% url 'update-project' project.id %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1 m-1"><i data-feather="edit"></i> <span class="button-text"> edit</span></a>
+                                                    <a href="{% url 'delete-project' project.id %}" style="border-radius: 50px;" class="btn icon icon-left btn-light p-2 pt-1 pb-1 m-1"><i data-feather="alert-triangle"></i> <span class="button-text"> delete</span></a>
+                                            </div> 
+
+                                            <!-- {% for tag in project.tags.all %}
 
                                                 <span class="badge bg-light-primary" style="border-radius: 50px;">
                                                     <small>{{tag}}</small>
                                                 </span>
 
-                                            {% endfor %}
+                                            {% endfor %} -->
 
                                             <!-- <div class="btn-group align-items-center mx-2 px-1">
                                                 <button type="button" class="btn btn-link p-2 m-1 text-decoration-none">

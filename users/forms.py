@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 
+from .models import Profile, Skill
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
@@ -34,3 +35,77 @@ class CustomUserCreationForm(UserCreationForm):
         )
 
 
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['name', 'email', 'username', 'location', 'short_intro', 'bio',
+                'profile_image', 'social_github', 'social_x', 'social_linkedin', 'social_youtube', 'social_portfolio']
+        
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        
+        self.fields['name'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['email'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['username'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['location'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['short_intro'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['bio'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+
+        self.fields['profile_image'].widget.attrs.update(
+            {'class': 'form-control', 'id':'formFile'}
+        )
+        
+        self.fields['social_github'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['social_x'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['social_linkedin'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['social_youtube'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['social_portfolio'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+
+class SkillForm(ModelForm):
+    class Meta:
+        model = Skill
+        fields = '__all__'
+        exclude = ['owner']
+    
+    def __init__(self, *args, **kwargs):
+        super(SkillForm, self).__init__(*args, **kwargs)
+        
+        self.fields['name'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['description'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        

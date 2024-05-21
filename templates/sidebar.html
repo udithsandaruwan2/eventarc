@@ -2,35 +2,21 @@
 <div id="sidebar">
     <div class="sidebar-wrapper active">
         <div class="sidebar-header position-relative">
-            <div class="d-flex justify-content-between align-items-center">
+            <div class="d-flex justify-content-center align-items-center">
                 <div class="logo">
                     <a href="">
-                        <img src="{% static 'ui-kit/assets/compiled/png/logo-b.png' %}" alt="EventArc" srcset="">
+                        <img src="{% static 'ui-kit/assets/compiled/png/logo.png' %}" style="width: 150px;  height: auto;" alt="EventArc" srcset="">
                     </a>
-                </div>
-                <div class="theme-toggle d-flex gap-2  align-items-center mt-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        aria-hidden="true" role="img" class="iconify iconify--system-uicons" width="20" height="20"
-                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 21 21">
-                        <!-- Your SVG code here -->
-                    </svg>
-                    <div class="form-check form-switch fs-6">
-                        <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
-                        <label class="form-check-label" for="toggle-dark">Dark Mode</label>
-                    </div>
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                        aria-hidden="true" role="img" class="iconify iconify--mdi" width="20" height="20"
-                        preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
-                        <!-- Your SVG code here -->
-                    </svg>
                 </div>
                 <div class="sidebar-toggler x">
                     <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
                 </div>
             </div>
         </div>
+        
+        
         <div class="sidebar-menu">
-            <ul class="menu">
+            <ul class="menu mt-0">
                 <li class="sidebar-title">Menu</li>
                 <li class="sidebar-item">
                     <a href="{% url 'analytics' %}" class="sidebar-link">
@@ -80,5 +66,18 @@
                 </li>
             </ul>
         </div>
+        <!-- <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                class="iconify iconify--system-uicons" width="20" height="20" preserveAspectRatio="xMidYMid meet"
+                viewBox="0 0 21 21">
+            </svg>
+            <div class="form-check form-switch fs-6">
+                <input class="form-check-input me-0" type="checkbox" id="toggle-dark" style="cursor: pointer">
+                <label class="form-check-label" for="toggle-dark">Dark Mode</label>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img"
+                class="iconify iconify--mdi" width="20" height="20" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24">
+            </svg>
+        </div> -->
     </div>
 </div>

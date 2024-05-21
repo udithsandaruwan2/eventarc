@@ -8,7 +8,7 @@
     <div class="container d-block">
         <a href="{% url 'profiles' %}"><i class="bi bi-chevron-left"></i></a>
         <a class="navbar-brand ms-4" href="{% url 'profiles' %}">
-            <img src="./assets/compiled/svg/logo.svg" alt="EventArc">
+            <img src="{% static 'ui-kit/assets/compiled/png/logo.png' %}" alt="EventArc">
         </a>
     </div>
 </nav>
@@ -26,7 +26,7 @@
                                     <h2 class="card-title mt-4">{{profile.name}}</h2>
                                     <p>{{profile.short_intro}}r</p>
                                     <p>{{profile.location}}</p>
-                          
+                                    
                                     <div class="m-1">
 
                                         {% if profile.social_github %}
