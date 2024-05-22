@@ -21,8 +21,8 @@ class Project(models.Model):
 
 class Like(models.Model):
     LIKE_TYPE = (
-         ('LIKE', 'LIKE VOTE'),
-         ('UNLIKE', 'UNLIKE VOTE')
+        ('LIKE', 'LIKE VOTE'),
+        ('UNLIKE', 'UNLIKE VOTE')
     )
     #owber = 
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
