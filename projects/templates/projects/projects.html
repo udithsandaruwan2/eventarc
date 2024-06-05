@@ -32,17 +32,16 @@
     <div class="row mb-5">
         <div class="col-3"></div>
         <div class="col-6">
-            <form class="form" action="#" method="get">
+            <form class="form" method="GET">
                 <div class="input-group input-group-lg">
-                    <input type="text" id="first-name-horizontal" class="form-control rounded-pill" name="fname" placeholder="Search by project name">
+                    <input value="{{search_query}}" type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" placeholder="Search by project name">
                     <div class="m-2">
                         <button class="btn btn-outline-secondary rounded-pill" type="submit">
                             <i class="bi bi-search"></i>
                         </button>
                     </div>
-                    
                 </div>
-            </form>
+            </form>            
         </div>
         <div class="col-3"></div>
     </div>
@@ -107,6 +106,9 @@
         </div>
     </section>
     <!-- Basic Card types section end -->
+
+    {% include 'pagination.html' with query_set=projects custom_range=custom_range %}
+
 </div>
 
 {% endblock content %}

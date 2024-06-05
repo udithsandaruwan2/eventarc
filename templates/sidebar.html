@@ -4,7 +4,7 @@
         <div class="sidebar-header position-relative">
             <div class="d-flex justify-content-center align-items-center">
                 <div class="logo">
-                    <a href="">
+                    <a href="{% url 'thoughts' %}">
                         <img src="{% static 'ui-kit/assets/compiled/png/logo.png' %}" style="width: 150px;  height: auto;" alt="EventArc" srcset="">
                     </a>
                 </div>
@@ -24,39 +24,17 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item has-sub">
-                    <a href="" class="sidebar-link">
+                <li class="sidebar-item">
+                    <a href="{% url 'projects' %}" class="sidebar-link">
                         <i class="bi bi-stack"></i>
                         <span>Projects</span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="{% url 'projects' %}" class="submenu-link">Overview</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="{% url 'create-project' %}" class="submenu-link">Add Project</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-badge.html" class="submenu-link">Badge</a>
-                        </li>
-                    </ul>
                 </li>
-                <li class="sidebar-item has-sub">
-                    <a href="" class="sidebar-link">
-                        <i class="bi bi-stack"></i>
-                        <span>Staff</span>
+                <li class="sidebar-item">
+                    <a href="{% url 'profiles' %}" class="sidebar-link">
+                        <i class="bi bi-person-badge-fill"></i>
+                        <span>Developers</span>
                     </a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="{% url 'profiles' %}" class="submenu-link">Overview</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="" class="submenu-link">Add Staff</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="component-badge.html" class="submenu-link">Badge</a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="sidebar-item">
                     <a href="{% url 'logout' %}" class="sidebar-link">

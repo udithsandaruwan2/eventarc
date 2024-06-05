@@ -1,0 +1,94 @@
+{% extends 'main-web-non-sidebar.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="main">
+    <div class="row justify-content-center">
+
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-5">
+            <div class="card">
+                <div class="card-body text-center">
+                    <img class="avatar avatar-sm mt-4" src="{{ profile.profile_image.url }}" alt="{{ profile.name }} Avatar" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 1px solid #fff;" />
+                    <h2 class="card-title mt-4">{{ profile.name }}</h2>
+                    <p>{{ profile.short_intro }}</p>
+                    <p>{{ profile.location }}</p>
+                    <div>
+                        <a href="{% url 'account' %}">View Profile</a>
+                        <br>
+                        <a href="{% url 'analytics' %}">Go to Dashboard</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 m-3 mt-5">
+            <div class="card">
+                <div class="card-body p-5">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="row mb-5">
+                            <div class="col-11">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                    <label for="floatingTextarea">Thought</label>
+                                </div>
+                            </div>
+                            <div class="col-1">
+                                <input type="submit" class="btn btn-primary mt-3" value="Publish">
+                            </div>
+                        </div>
+                    </form>
+
+                    {% for thought in thoughts %}
+                    <div class="thought mb-4">
+                        <div class="tweet-header">
+                            <h5><strong>{{ thought.author }}</strong> <span style="font-size: 15px;">@{{ thought.handle }} · {{ thought.date }}</span></h5>
+                        </div>
+                        <div class="tweet-body">
+                            <p>{{ thought.content }}</p>
+                        </div>
+                        {% if thought.image %}
+                        <div class="tweet-footer mb-3">
+                            <img src="{{ thought.image.url }}" alt="Thought Image" class="img-fluid">
+                        </div>
+                        {% endif %}
+                        <hr>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-5">
+            <div class="row mb-4 justify-content-center">
+                <div class="col-12">
+                    <form class="form" method="GET">
+                        <div class="input-group input-group-md">
+                            <input value="{{ search_query }}" type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" placeholder="Search by name">
+                            <div class="m-2">
+                                <button class="btn btn-outline-secondary rounded-pill" type="submit">
+                                    <i class="bi bi-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body text-center">
+                    <h2 class="card-title mt-4">{{ profile.name }}</h2>
+                    <p>{{ profile.short_intro }}</p>
+                    <p>{{ profile.location }}</p>
+                    <div>
+                        <a href="#">View Profile</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
