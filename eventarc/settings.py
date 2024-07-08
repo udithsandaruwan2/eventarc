@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'projects.apps.ProjectsConfig',
     'users.apps.UsersConfig',
     'thoughts.apps.ThoughtsConfig',
+    'notes.apps.NotesConfig',
 ]
 
 MIDDLEWARE = [

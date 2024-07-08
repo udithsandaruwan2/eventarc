@@ -18,24 +18,30 @@
         <div class="sidebar-menu">
             <ul class="menu mt-0">
                 <li class="sidebar-title">Menu</li>
-                <li class="sidebar-item">
-                    <a href="{% url 'analytics' %}" class="sidebar-link">
+                <li class="sidebar-item {% if page == 'analytics' %} active {% endif %} ">
+                    <a href="{% url 'analytics' %}" class="sidebar-link" >
                         <i class="bi bi-grid-fill"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item {% if page == 'projects' %} active {% endif %}">
                     <a href="{% url 'projects' %}" class="sidebar-link">
                         <i class="bi bi-stack"></i>
                         <span>Projects</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                <li class="sidebar-item {% if page == 'developers' %} active {% endif %}">
                     <a href="{% url 'profiles' %}" class="sidebar-link">
                         <i class="bi bi-person-badge-fill"></i>
                         <span>Developers</span>
                     </a>
                 </li>
+                <li class="sidebar-item {% if page == 'notes' %} active {% endif %}">
+                    <a href="{% url 'notes' %}" class="sidebar-link">
+                        <i class="bi bi-journal-text"></i>
+                        <span>Notes</span>
+                    </a>
+                </li>                
                 <li class="sidebar-item">
                     <a href="{% url 'logout' %}" class="sidebar-link">
                         <i class="bi bi-file-earmark-medical-fill"></i>

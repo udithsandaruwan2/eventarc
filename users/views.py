@@ -61,9 +61,10 @@ def registerUser(request):
 
 @login_required(login_url="login")
 def profiles(request):
+    page = "developers"
     profiles, search_query = searchProfiles(request)
     custom_range, profiles = paginateProfiles(request, profiles, 9)
-    context = {'profiles': profiles, 'search_query':search_query, 'custom_range':custom_range}
+    context = {'profiles': profiles, 'search_query':search_query, 'custom_range':custom_range, 'page':page}
     return render(request, 'users/profiles.html', context)
 
 
@@ -79,9 +80,10 @@ def userProfile(request, pk):
 
 @login_required(login_url="login")
 def userAnalytics(request):
+    page = "analytics"
     profile = request.user.profile
     
-    context = {'profile':profile}
+    context = {'profile':profile, 'page':page}
     return render(request, 'users/analytics.html', context)
 
 @login_required(login_url="login")

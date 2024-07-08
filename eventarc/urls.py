@@ -12,6 +12,8 @@ urlpatterns = [
     path('', include('users.auth_urls')),
     
     path('', include('thoughts.urls')),
+    
+    path('', include('notes.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
