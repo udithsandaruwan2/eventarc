@@ -7,8 +7,19 @@
 <div class="main">
     <div class="row justify-content-center">
 
+        
+
         <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12 mt-5">
             <div class="card">
+
+                {% if profile == None %}
+
+                <div class="card-body text-center">
+                    <a href="{% url 'login' %}" type="submit" class="btn btn-primary mt-3" value="Publish">Log in</a>
+                </div>
+
+                {% else %}
+
                 <div class="card-body text-center">
                     <img class="avatar avatar-sm mt-4" src="{{ profile.profile_image.url }}" alt="{{ profile.name }} Avatar" style="width: 130px; height: 130px; border-radius: 50%; object-fit: cover; border: 1px solid #fff;" />
                     <h2 class="card-title mt-4">{{ profile.name }}</h2>
@@ -20,8 +31,13 @@
                         <a href="{% url 'analytics' %}">Go to Dashboard</a>
                     </div>
                 </div>
+
+                {% endif %}
+
             </div>
         </div>
+
+        
 
         <div class="col-lg-6 col-md-8 col-sm-12 col-xs-12 m-3 mt-5">
             <div class="card">
@@ -44,7 +60,8 @@
                     {% for thought in thoughts %}
                     <div class="thought mb-4">
                         <div class="tweet-header">
-                            <h5><strong>{{ thought.author }}</strong> <span style="font-size: 15px;">@{{ thought.handle }} · {{ thought.date }}</span></h5>
+                            <h5><strong>{{ thought.author }}</strong> <span style="font-size: 15px;"> {{ thought.created }}</span></h5> 
+                            <!-- @ thought.handle  · -->
                         </div>
                         <div class="tweet-body">
                             <p>{{ thought.content }}</p>
