@@ -34,7 +34,7 @@
         <div class="col-6">
             <form class="form" method="GET">
                 <div class="input-group input-group-lg">
-                    <input value="{{search_query}}" type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" placeholder="Search by project name">
+                    <input value="{{search_query}}" type="text" id="first-name-horizontal" class="form-control rounded-pill" name="search" placeholder="Search by note title">
                     <div class="m-2">
                         <button class="btn btn-outline-secondary rounded-pill" type="submit">
                             <i class="bi bi-search"></i>
@@ -43,7 +43,7 @@
                 </div>
             </form>            
         </div>
-        <div class="col-3"></div>
+        <div class="col-3 "></div>
     </div>
 
     <!-- Basic card section start -->
@@ -121,5 +121,13 @@
     {% include 'pagination.html' with query_set=projects custom_range=custom_range %}
 
 </div>
+
+{% include 'notes/note-model.html' %}
+
+<a data-bs-toggle="modal" data-bs-target="#animation" type="button" href="#" class="btn btn-primary" style="position: fixed; bottom: 35px; right: 35px; background-color: rgb(255, 255, 255, 0.4); backdrop-filter: blur(100px); 
+    color: rgb(255, 255, 255); border: solid 0.151rem; border-color: rgb(255, 255, 255, 0.4); padding: 18px; padding-top: 5px; padding-bottom: 5px; 
+    border-radius: 13px; cursor: pointer; font-size: 30px; z-index: 999;">+</a>
+
+
 
 {% endblock content %}

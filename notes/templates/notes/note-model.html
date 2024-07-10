@@ -1,0 +1,66 @@
+<!-- Modal -->
+<div class="modal fade" id="animation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel6" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+        <div class="modal-content">
+
+            <form method="POST" class="m-3">
+
+                {% csrf_token %}
+
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel6">ADD NOTE</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    {% for field in form %}
+                        <div class="col-12">
+                            <div class="form-group">
+                                <label for="first-name-vertical">{{field.label}}</label>
+                                {{field}}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
+                        <i class="bx bx-x d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Close</span>
+                    </button>
+                    <button type="submit" class="btn btn-primary ms-1">
+                        <i class="bx bx-check d-block d-sm-none"></i>
+                        <span class="d-none d-sm-block">Save</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Styles -->
+<style>
+    .modal {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .modal.show {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .modal-dialog {
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.6s ease;
+        transform: translateY(-20px);
+    }
+
+    .modal.show .modal-dialog {
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
