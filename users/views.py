@@ -51,7 +51,7 @@ def registerUser(request):
             messages.success(request, 'User account was created!')
 
             login(request, user)
-            return redirect('projects')
+            return redirect('thoughts')
         
         else:
             messages.error(request, 'An error has occurred during registation!')
