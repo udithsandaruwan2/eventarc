@@ -27,7 +27,7 @@
                     <div>
                         <a href="{% url 'account' %}">View Profile</a>
                         <br>
-                        <a href="{% url 'analytics' %}">Go to Dashboard</a>
+                        <!-- <a href="{% url 'analytics' %}">Go to Dashboard</a> -->
                     </div>
                 </div>
 
@@ -51,8 +51,9 @@
                         </div>
 
                         {% else %}
+                        
 
-                        <div class="row justify-content-center">
+                        <div id="desktop_thought_input" class="row justify-content-center">
                             <div class="col-10">
                                 <div class="form-floating">
                                     <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="border-radius: 25px" name="thought_input"></textarea>
@@ -65,6 +66,20 @@
                                 </button>
                             </div>
                         </div>
+
+                        <!-- <div id="mobile_thought_input" class="row justify-content-center" style="display: none;">
+                            <div class="col-9">
+                                <div class="form-floating">
+                                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" style="border-radius: 25px" name="thought_input"></textarea>
+                                    <label for="floatingTextarea">Thought</label>
+                                </div>
+                            </div>
+                            <div class="col-3 d-flex align-items-center justify-content-center">
+                                <button type="submit" class="btn btn-primary p-4 pt-3 pb-3" style="border-radius: 25px">
+                                    <i class="fas fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div> -->
 
                         {% endif %}
                         
