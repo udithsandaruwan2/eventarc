@@ -13,3 +13,6 @@ class Note(models.Model):
     
     def __str__(self):
         return str(self.title)
+    
+    class Meta:
+        ordering = ['-created']

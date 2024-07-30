@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Todo
 from .forms import TodoForm
+from .utils import generate_code
 
 def todoList(request):
     page = 'todos'
@@ -15,6 +16,7 @@ def todoList(request):
             todo_add = form.save(commit=False)
             todo_add.todo = todo_note
             todo_add.owner = profile
+            todo_add.label = generate_code()
             todo_add.save()
             return redirect('todos')
         

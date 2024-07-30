@@ -11,7 +11,7 @@
                     <h4 class="modal-title" id="myModalLabel6">ADD NOTE</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body" style="max-height: 400px; overflow-y: auto;">
 
                     {% for field in form %}
                         <div class="col-12">
@@ -21,33 +21,28 @@
                             </div>
                         </div>
                     {% endfor %}
-                        <div class="card">
-                            <div class="card-header p-0 pt-2">
-                                <h4 class="card-title">Todos</h4>
-                            </div>
-                            <div class="card-content">
-                                <div class="card-body p-0">
-                                    <ul class="list-group p-0">
-                                        <li class="list-group-item">
-                                            <input id="checkbox-1" class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                            <label for="checkbox-1">Cras justo odio</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input id="checkbox-2" class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                            <label for="checkbox-2">Dapibus ac facilisis in</label>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <input id="checkbox-3" class="form-check-input me-1" type="checkbox" value="" aria-label="...">
-                                            <label for="checkbox-3">Morbi leo risus</label>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
+                    <div class="card">
+                        <div class="card-header p-0 pt-2">
+                            <h4 class="card-title">Todos</h4>
+                        </div>
+                        <div class="card-content">
+                            <div class="card-body p-0">
+                                <ul class="list-group p-0">
+
+                                    {% for todo in todos %}
+            <li class="list-group-item">
+                <input id="checkbox-{{todo.id}}" name="todo_ids" class="form-check-input me-1" type="checkbox" value="{{ todo.id }}" aria-label="...">
+                <label for="checkbox-{{todo.id}}"> {{ todo.todo }} </label>
+            </li>
+        {% endfor %}
+                                
+                                </ul>
                             </div>
                         </div>
+                    </div>
 
                 </div>
-                
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light-secondary" data-bs-dismiss="modal">
                         <i class="bx bx-x d-block d-sm-none"></i>
@@ -90,6 +85,11 @@
     }
 
     .modal-content {
-        border-radius: 0.7rem; /* Add this line */
+        border-radius: 0.7rem;
+    }
+
+    .modal-body {
+        max-height: 400px; /* Set a maximum height for the modal body */
+        overflow-y: auto; /* Enable vertical scrolling */
     }
 </style>

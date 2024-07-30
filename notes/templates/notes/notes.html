@@ -81,9 +81,16 @@
                             <p class="card-text mt-3">
                                 {{note.description|slice:100}}
                             </p>
-                            <p class="card-text">
-                                Cupcake fruitcake macaroon donut pastry gummies tiramisu chocolate bar muffin.
-                            </p>
+                          
+                                <div class="badges">
+
+                                    {% for todo in note.todo_field.all %}
+                                        <span class="badge bg-light-primary">{{ todo.label }}</span>
+                                    {% endfor %}
+
+
+                                </div>
+                   
 
                             <!-- {% for tag in project.tags.all|slice:"5" %}
 
