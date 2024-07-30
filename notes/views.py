@@ -6,10 +6,8 @@ from .utils import searchNotes
 
 def notes(request):
     page = "notes"
-    form = NoteForm()
-    
     profile = request.user.profile
-    
+    form = NoteForm()
     notes, search_query = searchNotes(request)
     
     if request.method == 'POST':

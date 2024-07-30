@@ -31,23 +31,29 @@
     <section class="section">
         <div class="row">
             <div class="col">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-floating">
+                <form method="POST">
 
-                            <form method="POST">
+                    {% csrf_token %}
 
-                                <textarea class="form-control" placeholder="Leave a note here"
-                                id="floatingTextarea" name="todo_note"></textarea>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-floating">
+    
                                 
-                                <label for="floatingTextarea">I have todo ...</label>
-                                <button></button>
-
-                            </form>
-                            
+    
+                                    <input type="text" class="form-control" placeholder="Leave a note here"
+                                    id="floatingTextarea" name="todo_note">
+                                    
+                                    <label for="floatingTextarea">I have todo ...</label>
+                                
+                                <button hidden></button>
+                                
+                                
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
+                
             </div>
         </div>
     </section>
@@ -61,7 +67,7 @@
                         <h4 class="card-title d-flex">
                             <i class="bx bx-check font-medium-5 pl-25 pr-75"></i>Tasks
                         </h4>
-                        <ul class="list-inline d-flex mb-0">
+                        <!-- <ul class="list-inline d-flex mb-0">
                             <li class="d-flex align-items-center">
                                 <i class="bx bx-check-circle font-medium-3 me-50"></i>
                                 <div class="dropdown">
@@ -88,111 +94,13 @@
                                     </div>
                                 </div>
                             </li>
-                        </ul>
+                        </ul> -->
                     </div>
                     <div class="card-body px-0 py-1 overflow-auto">
                         <ul class="widget-todo-list-wrapper" id="widget-todo-list">
-                            <li class="widget-todo-item">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
-                                    <div class="widget-todo-title-area d-flex align-items-center gap-2">
-                                        <i data-feather="list" class="cursor-move"></i>
-                                        <div class="checkbox checkbox-shadow">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-1">
-                                        </div>
-                                        <label for="checkbox-1" class="widget-todo-title ms-2">Add SCSS and JS files if
-                                            required</label>
-                                    </div>
-                                    <div class="widget-todo-item-action d-flex align-items-center">
-                                        <div class="badge badge-pill bg-light-success me-1">frontend</div>
-                                        <div class="avatar bg-warning">
-                                            <img src="./assets/compiled/jpg/1.jpg" alt="" srcset="">
-                                        </div>
-                                        <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="widget-todo-item">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
-                                    <div class="widget-todo-title-area d-flex align-items-center gap-2">
-                                        <i data-feather="list" class="cursor-move"></i>
-                                        <div class="checkbox checkbox-shadow">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-2">
-                                        </div>
-                                        <label for="checkbox-2" class="widget-todo-title ms-2">Check all the changes that you did,
-                                            before you commit</label>
-                                    </div>
-                                    <div class="widget-todo-item-action d-flex align-items-center">
-                                        <div class="badge badge-pill bg-light-danger me-1">backend</div>
-                                        <div class="avatar bg-warning">
-                                            <img src="./assets/compiled/jpg/2.jpg" alt="" srcset="">
-                                        </div>
-                                        <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="widget-todo-item completed">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
-                                    <div class="widget-todo-title-area d-flex align-items-center gap-2">
-                                        <i data-feather="list" class="cursor-move"></i>
-                                        <div class="checkbox checkbox-shadow">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-3" checked>
-                                        </div>
-                                        <label for="checkbox-3" class="widget-todo-title ms-2">Dribble, Behance, UpLabs & Pinterest
-                                            Post</label>
-                                    </div>
-                                    <div class="widget-todo-item-action d-flex align-items-center">
-                                        <div class="badge badge-pill bg-light-primary me-1">UI/UX</div>
-                                        <div class="avatar bg-rgba-primary m-0 me-50">
-                                            <img src="./assets/compiled/jpg/3.jpg" alt="" srcset="">
-                                        </div>
-                                        <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="widget-todo-item">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
-                                    <div class="widget-todo-title-area d-flex align-items-center gap-2">
-                                        <i data-feather="list" class="cursor-move"></i>
-                                        <div class="checkbox checkbox-shadow">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-4">
-                                        </div>
-                                        <label for="checkbox-4" class="widget-todo-title ms-2">Fresh Design Web & Responsive
-                                            Miracle</label>
-                                    </div>
-                                    <div class="widget-todo-item-action d-flex align-items-center">
-                                        <div class="badge badge-pill bg-light-info me-1">Design</div>
-                                        <div class="avatar bg-warning">
-                                            <img src="./assets/compiled/jpg/4.jpg" alt="" srcset="">
-                                        </div>
-                                        <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="widget-todo-item">
-                                <div
-                                    class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
-                                    <div class="widget-todo-title-area d-flex align-items-center gap-2">
-                                        <i data-feather="list" class="cursor-move"></i>
-                                        <div class="checkbox checkbox-shadow">
-                                            <input type="checkbox" class="form-check-input" id="checkbox-5">
-                                        </div>
-                                        <label for="checkbox-5" class="widget-todo-title ms-2">Add Calendar page and source and
-                                            credit page in
-                                            documentation</label>
-                                    </div>
-                                    <div class="widget-todo-item-action d-flex align-items-center">
-                                        <div class="badge badge-pill bg-light-warning me-1">Javascript</div>
-                                        <div class="avatar bg-warning">
-                                            <img src="./assets/compiled/jpg/5.jpg" alt="" srcset="">
-                                        </div>
-                                        <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
-                                    </div>
-                                </div>
-                            </li>
+                            
+                            {% for todo in todos %}
+
                             <li class="widget-todo-item">
                                 <div
                                     class="widget-todo-title-wrapper d-flex justify-content-between align-items-center mb-50">
@@ -201,17 +109,20 @@
                                         <div class="checkbox checkbox-shadow">
                                             <input type="checkbox" class="form-check-input" id="checkbox-6">
                                         </div>
-                                        <label for="checkbox-6" class="widget-todo-title ms-2">Add Angular Starter-kit</label>
+                                        <label for="checkbox-6" class="widget-todo-title ms-2">{{ todo.todo }}</label>
                                     </div>
                                     <div class="widget-todo-item-action d-flex align-items-center">
-                                        <div class="badge badge-pill bg-light-primary me-1">UI/UX</div>
+                                        <div class="badge badge-pill bg-light-primary me-1">Tag</div>
                                         <div class="avatar bg-warning">
-                                            <img src="./assets/compiled/jpg/1.jpg" alt="" srcset="">
+                                            <img src="{{ todo.owner.profile_image.url }}" alt="" srcset="">
                                         </div>
                                         <i class="bx bx-dots-vertical-rounded font-medium-3 cursor-pointer"></i>
                                     </div>
                                 </div>
                             </li>
+
+                            {% endfor %}
+
                         </ul>
                     </div>
                 </div>

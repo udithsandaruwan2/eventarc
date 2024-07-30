@@ -36,18 +36,19 @@
                         <span>Developers</span>
                     </a>
                 </li>
+                   
+                <li class="sidebar-item {% if page == 'todos' %} active {% endif %}">
+                    <a href="{% url 'todos' %}" class="sidebar-link">
+                        <i class="bi bi-clipboard-check"></i>
+                        <span>Todo</span>
+                    </a>
+                </li>
                 <li class="sidebar-item {% if page == 'notes' %} active {% endif %}">
                     <a href="{% url 'notes' %}" class="sidebar-link">
                         <i class="bi bi-journal-text"></i>
                         <span>Notes</span>
                     </a>
-                </li>     
-                <li class="sidebar-item {% if page == 'todos' %} active {% endif %}">
-                    <a href="{% url 'todos' %}" class="sidebar-link">
-                        <i class="bi bi-journal-text"></i>
-                        <span>Todo</span>
-                    </a>
-                </li>            
+                </li>   
                 <li class="sidebar-item">
                     <a href="{% url 'logout' %}" class="sidebar-link">
                         <i class="bi bi-file-earmark-medical-fill"></i>
