@@ -22,6 +22,7 @@ def project(request, pk):
 
 @login_required(login_url="login")
 def createProject(request):
+    page= "add-project"
     profile = request.user.profile
     form = ProjectForm()
 
@@ -33,7 +34,7 @@ def createProject(request):
             project.save()
             return redirect('projects')
 
-    context = {'form':form}
+    context = {'form':form, 'page':page}
     return render(request, 'projects/project-form.html', context)
 
 @login_required(login_url="login")

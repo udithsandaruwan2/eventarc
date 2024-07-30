@@ -14,6 +14,8 @@ urlpatterns = [
     path('', include('thoughts.urls')),
     
     path('', include('notes.urls')),
+    
+    path('', include('todos.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

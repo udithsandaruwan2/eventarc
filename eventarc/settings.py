@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'thoughts.apps.ThoughtsConfig',
     'notes.apps.NotesConfig',
+    'todos.apps.TodosConfig',
 ]
 
 MIDDLEWARE = [
