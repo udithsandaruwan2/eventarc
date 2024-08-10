@@ -155,58 +155,47 @@
                       
                         </div>
                         <!-- form start -->
-                        <form action="#" id="compose-form">
+                        <form method="POST">
+                            {% csrf_token %}
+                        
                             <div class="card-content">
-                                <div class="card-body pt-0">
+                          <div class="card-body pt-0"> 
                                     <div class="form-group pb-50">
                                         <label for="emailfrom">From</label>
-                                        <input type="text" id="emailfrom" class="form-control"
-                                            placeholder="user@example.com" disabled="">
+                                        <input type="text" id="sender" class="form-control" 
+                                            placeholder="{{ profile.email }}" disabled>
+                                        <input type="hidden" name="sender" value="{{ profile.email }}">
                                     </div>
-                                    <div class="form-label-group">
+                                   <!--  <div class="form-label-group">
                                         <label for="emailTo">To</label>
-                                        <input type="email" id="emailTo" class="form-control" placeholder="To"
-                                            required="">
-                                        
+                                        <input type="email" id="recipient" class="form-control" 
+                                            placeholder="To" required name="recipient">
                                     </div>
                                     <div class="form-label-group mt-3">
                                         <label for="emailSubject">Subject</label>
-                                        <input type="text" id="emailSubject" class="form-control" placeholder="Subject">
-                                        
+                                        <input type="text" id="subject" class="form-control" 
+                                            placeholder="Subject" required name="subject">
                                     </div>
-                                    <!-- <div class="form-label-group">
-                                        <input type="text" id="emailCC" class="form-control" placeholder="CC">
-                                        <label for="emailCC">CC</label>
-                                    </div>
-                                    <div class="form-label-group">
-                                        <input type="text" id="emailBCC" class="form-control" placeholder="BCC">
-                                        <label for="emailBCC">BCC</label>
-                                    </div> -->
-                                    <!-- Compose mail Quill editor -->
                                     <div class="form-label-group mt-3 mb-3">
-                                        <label for="emailSubject">Body</label>
-                                        <textarea type="text" id="emailSubject" class="form-control" placeholder="Body"></textarea>  
-                                        
-                                    </div>
-                                    <div class="form-group mt-2">
-                                        <div class="custom-file">
-                                            <label class="custom-file-label" for="emailAttach">Attach File</label>
-                                            <input type="file" class="form-control" id="emailAttach">
-                                            
-                                        </div>
-                                    </div>
-                                </div>
+                                        <label for="emailBody">Body</label>
+                                        <textarea id="body" class="form-control" 
+                                            placeholder="Body" name="body"></textarea>  
+                                    </div> -->
+                                     <!-- <div class="form-group mt-2">
+                                        <label for="attach" class="form-label">Attach File</label>
+                                        <input type="file" class="form-control" id="attach" name="attach">
+                                    </div>  -->
+                                    {{form}}
+                                </div> 
                             </div>
                             <div class="card-footer d-flex justify-content-end pt-0">
-                                <button type="reset" class="btn btn-light-secondary cancel-btn me-1">
-                                    <i class="bi bi-x me-3"></i>
-                                    <span class="d-sm-inline d-none">Cancel</span>
-                                </button>
                                 <button type="submit" class="btn-send btn btn-primary">
                                     <i class="bi bi-send me-3"></i> <span class="d-sm-inline d-none">Send</span>
                                 </button>
                             </div>
                         </form>
+                        
+                        
                         <!-- form start end-->
                     </div>
                     <div class="ps__rail-x" style="left: 0px; bottom: 0px;">

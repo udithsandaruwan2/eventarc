@@ -72,8 +72,12 @@
                                     </div>
                                     
 
+                                    {% if request.user.profile.id != profile.id %}
                         
-                                    <a href="#" class="btn btn-primary p-5 pt-3 pb-3 mt-4">Send Message</a>
+                                    <a href="{% url 'inbox' %}" class="btn btn-primary p-5 pt-3 pb-3 mt-4">Send Message</a>
+                               
+                                    {% endif %}
+                               
                                 </div>
                             </div>
                         </div>

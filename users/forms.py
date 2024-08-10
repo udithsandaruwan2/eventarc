@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User
 
-from .models import Profile, Skill
+from .models import Profile, Skill, Message
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
         model = User
@@ -109,3 +109,22 @@ class SkillForm(ModelForm):
             {'class': 'form-control'}
         )
         
+class MailForm(ModelForm):
+    class Meta:
+        model = Message
+        fields = ['recipient', 'subject', 'body']
+    
+    def __init__(self, *args, **kwargs):
+        super(MailForm, self).__init__(*args, **kwargs)
+        
+        self.fields['recipient'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+        
+        self.fields['subject'].widget.attrs.update(
+            {'class': 'form-control'}
+        )
+
+        self.fields['body'].widget.attrs.update(
+            {'class': 'form-control'}
+        )

@@ -4,7 +4,7 @@ from .models import Profile, Skill, Message
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .forms import CustomUserCreationForm, ProfileForm, SkillForm
+from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MailForm
 from django.db.models import Q
 from .utils import searchProfiles, paginateProfiles
 
@@ -152,22 +152,46 @@ def deleteSkill(request, pk):
     context = {'skill':skill}
     return render(request, 'users/delete-skill.html', context)
 
+
 @login_required(login_url="login")
 def inbox(request):
     page = "inbox"
     profile = request.user.profile
     message_request = profile.messages.all()
-    unread_count = message_request.filter(is_read=False).count()
-    context = {'page':page, 'message_request':message_request, 'unread_count':unread_count}
+    unread_count = message_request.filter(is_read=False).count() 
+
+    form = MailForm()
+
+    if request.method == 'POST':
+        form = MailForm(request.POST)
+        
+        if form.is_valid():
+            mail = form.save(commit=False)
+            mail.sender = profile
+  
+            # Handle file attachment if provided
+            # if 'attach' in request.FILES:
+                # mail.attach = request.FILES['attach']  # Assuming 'attach' is a file field   
+            mail.save()
+            # form.save()
+            messages.success(request, 'Email sent successfully!')
+            return redirect('inbox')
+        else:
+            messages.error(request, 'There was an error in the form. Please correct it and try again.')
+
+    context = {'page': page, 'profile': profile, 'message_request': message_request, 'unread_count': unread_count, 'form':form}
     return render(request, 'users/inbox.html', context)
+
 
 @login_required(login_url="login")
 def mailPreview(request, pk):
     page = "mail-preview"
     profile = request.user.profile
     message = profile.messages.get(id=pk)
+    
     if message.is_read == False:
         message.is_read = True
         message.save()
+        
     context = {'page':page, 'message':message}
     return render(request, 'users/mail-preview.html', context)
