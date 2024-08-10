@@ -160,3 +160,14 @@ def inbox(request):
     unread_count = message_request.filter(is_read=False).count()
     context = {'page':page, 'message_request':message_request, 'unread_count':unread_count}
     return render(request, 'users/inbox.html', context)
+
+@login_required(login_url="login")
+def mailPreview(request, pk):
+    page = "mail-preview"
+    profile = request.user.profile
+    message = profile.messages.get(id=pk)
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+    context = {'page':page, 'message':message}
+    return render(request, 'users/mail-preview.html', context)

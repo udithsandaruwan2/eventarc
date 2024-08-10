@@ -1,30 +1,49 @@
-<!--Modal lg size -->
+{% extends 'main-web-non-sidebar.html' %}
 
-    <!--large size Modal -->
-    <div class="modal fade text-left" id="large" tabindex="-1" role="dialog"
-        aria-labelledby="myModalLabel17" aria-hidden="true" >
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
-            role="document">
-            <div class="modal-content p-3" style="border-radius:0.7rem">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel6">{{message.subject}}</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body mt-4 mb-4 " style="text-align: justify; line-height: 2; font-size: medium;">
-                    {{message.body}}
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-light-secondary"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-x d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Close</span>
-                    </button>
-                    <button type="button" class="btn btn-primary ms-1"
-                        data-bs-dismiss="modal">
-                        <i class="bx bx-check d-block d-sm-none"></i>
-                        <span class="d-none d-sm-block">Accept</span>
-                    </button> -->
+{% load static %}
+
+{% block content %}
+
+<nav class="navbar navbar-light">
+    <div class="container d-block">
+        <a href="{% url 'inbox' %}"><i class="bi bi-chevron-left"></i></a>
+        <a class="navbar-brand ms-4" href="{% url 'inbox' %}">
+            <img src="{% static 'ui-kit/assets/compiled/png/logo.png' %}" alt="EventArc">
+        </a>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ message.subject|capfirst }}</h4>
+                        <p class="card-text mt-4">
+                            {{ message.body|linebreaksbr }}
+                        </p>
+                        <p class="card-text">
+                           By {{ message.sender }}
+                        </p>
+                        <small class="text-muted">{{ message.created }}</small>
+                    </div>
+                    <div class="row justify-content-end">
+                        <div class="col-4 ms-auto text-end">
+                            <img class="card-img-bottom img-fluid mb-3" src="{% static 'ui-kit/assets/compiled/jpg/mail.png' %}" 
+                            alt="Card image cap" style="height: 60px; width: auto;">
+                        </div>
+                    </div>
+                    
+                    
+                   
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+
+
+
+{% endblock content %}
